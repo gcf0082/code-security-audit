@@ -1,0 +1,26 @@
+{
+  "skill_name": "code-security-audit",
+  "evals": [
+    {
+      "id": 1,
+      "name": "directory-top-down-audit",
+      "prompt": "帮我看一下 /app/services/api 目录下所有 handler 的安全风险，做一个自顶向下的安全审计。主要关注认证绕过和注入类问题。",
+      "expected_output": "派发 top-down agent 的任务书，目标为 /app/services/api 目录，分析模式为自顶向下，漏洞范围为认证绕过和注入类问题，输出入口层调用链和发现的问题列表",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "interface-entry-analysis",
+      "prompt": "分析 user_controller.py 中的 LoginHandler 接口，看看有没有安全漏洞，从入口开始追踪到所有可能的数据流终点。",
+      "expected_output": "派发 top-down agent 的任务书，目标为 user_controller.py 中的 LoginHandler，分析模式为自顶向下，输出入口信息和调用链",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "sink-bottom-up-verification",
+      "prompt": "app/models.py 第 127 行的 cursor.execute() 调用是 SQL 注入吗？帮我从这行反查数据流，确认是否可控。",
+      "expected_output": "派发 bottom-up agent 的任务书，目标为 app/models.py:127 的 cursor.execute()，分析模式为自底向上，输出数据流回溯和 TRUE/FALSE POSITIVE 判定",
+      "files": []
+    }
+  ]
+}
